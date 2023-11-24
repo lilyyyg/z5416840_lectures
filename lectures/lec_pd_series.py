@@ -67,18 +67,30 @@ print(prcs)
 ary  = ser.array
 print(ary)
 
+# Output:
+#  <PandasArray>
+#  [7.16, 7.19, 7.0, 7.1, 6.86, 6.95, 7.0, 7.02, 7.11, 7.04]
+#  Length: 10, dtype: float64
+
 # Like any instance, you can get its type (i.e., the class used to create the
 # instance)
 print(type(ser.array))
+# Output:
+#  <class 'pandas.core.arrays.numpy_.PandasArray'>
 
 # Use the `index` attribute to get the index from a series
 the_index  = ser.index
 print(the_index)
+# Output:
+# Index(['2020-01-02', '2020-01-03', '2020-01-06', '2020-01-07', '2020-01-08',
+#    '2020-01-09', '2020-01-10', '2020-01-13', '2020-01-14', '2020-01-15'],
+#   dtype='object')
 
 # Like any instance, you can get its type (i.e., the class used to create the
 # instance).
 print('The type of `the_index` is', type(the_index))
-
+# Output:
+# The type of `the_index` is <class 'pandas.core.indexes.base.Index'>
 # ----------------------------------------------------------------------------
 #   Changing the index by assignment
 # ----------------------------------------------------------------------------
@@ -102,6 +114,18 @@ ser.index = [0, 1, 2, 3, -4, 5, 6, 7, 8, 1000]
 # ----------------------------------------------------------------------------
 # Lets see how the series looks like
 print(ser)
+# Output:
+#  0       7.16
+#  1       7.19
+#  2       7.00
+#  3       7.10
+# -4       6.86
+#  5       6.95
+#  6       7.00
+#  7       7.02
+#  8       7.11
+#  1000    7.04
+# dtype: float64
 
 # This will return 7.04
 x  = ser[1000]

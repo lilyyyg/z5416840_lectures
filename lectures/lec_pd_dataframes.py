@@ -63,53 +63,58 @@ bday_ser = pd.Series(data=bday, index=dates)
 #   Create a dataframe
 # ----------------------------------------------------------------------------
 # Data Frame with close and Bday columns
-df  = '?'
-#print(df)
+df = pd.DataFrame({'Close': prc_ser, 'Bday': bday_ser})
+print(df)
 
 
 # ----------------------------------------------------------------------------
 #   Accessing the indexes in a dataframe
 # ----------------------------------------------------------------------------
 # The attribute `columns` returns the column index
-#print(df.columns)
-#print('The type of this index is', type(df.columns))
+print(df.columns)
+print('The type of this index is', type(df.columns))
 
 # We can get the series corresponding to a column index label
-#col0 = df['Close']
-#print(col0)
+col0 = df['Close']
+print(col0)
 
 # Just like any series, you can access the index using:
-#print(col0.index)
-#print(type(col0.index))
+print(col0.index)
+print(type(col0.index))
 
 # In fact, this corresponds to the Dataframe index as well
-#print(df.index)
-#print(type(df.index))
+print(df.index)
+# Out:
+# Index(['2020-01-02', '2020-01-03', '2020-01-06', '2020-01-07', '2020-01-08',
+#        '2020-01-09', '2020-01-10', '2020-01-13', '2020-01-14', '2020-01-15'],
+#       dtype='object')
+print(type(df.index))
+# <class 'pandas.core.indexes.base.Index'>
 
 
 # ----------------------------------------------------------------------------
 #   Modifying columns and indexes
 # ----------------------------------------------------------------------------
 # Modify columns and indexes
-#df.columns = ['A', 'B']
-#df.index = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-#print(df)
+df.columns = ['A', 'B']
+df.index = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(df)
 
 # Then revert back
-#df.columns = ['Close', 'Bday']
-#df.index = [
-#  '2020-01-02',
-#  '2020-01-03',
-#  '2020-01-06',
-#  '2020-01-07',
-#  '2020-01-08',
-#  '2020-01-09',
-#  '2020-01-10',
-#  '2020-01-13',
-#  '2020-01-14',
-#  '2020-01-15',
-#]
-#print(df)
+df.columns = ['Close', 'Bday']
+df.index = [
+  '2020-01-02',
+  '2020-01-03',
+  '2020-01-06',
+  '2020-01-07',
+  '2020-01-08',
+  '2020-01-09',
+  '2020-01-10',
+  '2020-01-13',
+  '2020-01-14',
+  '2020-01-15',
+]
+print(df)
 
 # ----------------------------------------------------------------------------
 #   Sorting
@@ -123,7 +128,7 @@ print(new_ser)
 print(new_ser.is_monotonic_increasing)
 
 # Sort the series based on the index
-sorted_ser  = '?'
+sorted_ser  = new_ser.sort_index()
 print(sorted_ser)
 
 # This will return only the first rows (not the entire series as before)
@@ -144,7 +149,7 @@ print(x)
 # dtype: int64
 
 # Create a series with an unsorted index
-ser_sort_inplace  = '?'
+ser_sort_inplace  = pd.Series(data=[1,3,2], index=['a', 'c', 'b'])
 
 # Sort the series. Note that we are not assigning this function call
 # to a new variable.
